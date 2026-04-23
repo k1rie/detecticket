@@ -1,0 +1,342 @@
+.dashboard {
+  padding: 40px 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  gap: 24px;
+}
+
+.dashboard-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.dashboard-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.dashboard-model-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.model-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid;
+}
+
+.model-status--ready {
+  color: var(--status-different);
+  background: var(--status-different-bg);
+  border-color: var(--status-different-border);
+}
+
+.model-status--loading, .model-status--idle {
+  color: var(--status-related);
+  background: var(--status-related-bg);
+  border-color: var(--status-related-border);
+}
+
+.model-status--error, .model-status--unknown {
+  color: var(--status-duplicate);
+  background: var(--status-duplicate-bg);
+  border-color: var(--status-duplicate-border);
+}
+
+.model-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+}
+
+.dashboard-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.feature-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  text-align: left;
+  transition: var(--transition);
+  cursor: pointer;
+  width: 100%;
+}
+
+.feature-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--card-accent, var(--accent));
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--card-accent, var(--accent)) 15%, transparent);
+  transform: translateY(-2px);
+}
+
+.feature-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--card-accent-dim, var(--accent-dim));
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--accent)) 30%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent, var(--accent));
+  flex-shrink: 0;
+}
+
+.feature-card-body {
+  flex: 1;
+}
+
+.feature-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.feature-card-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.feature-card-arrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.feature-card:hover .feature-card-arrow {
+  color: var(--card-accent, var(--accent));
+  transform: translateX(3px);
+}
+
+.dashboard-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.dashboard-formula-section {
+  margin-bottom: 40px;
+}
+
+.formula-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.formula-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 40px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+}
+
+.formula-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.formula-eq {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.formula-theta {
+  color: var(--accent);
+  font-style: italic;
+  font-size: 20px;
+}
+
+.formula-op {
+  color: var(--text-muted);
+}
+
+.formula-fn {
+  color: var(--text-secondary);
+}
+
+.formula-paren {
+  color: var(--text-muted);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.formula-fraction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.formula-num, .formula-den {
+  padding: 0 4px;
+  font-size: 14px;
+}
+
+.formula-div-line {
+  width: 100%;
+  height: 1px;
+  background: var(--text-muted);
+}
+
+.formula-highlight {
+  color: var(--accent);
+}
+
+.formula-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.legend-item code {
+  font-size: 13px;
+  color: var(--accent);
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+}
+
+.legend-item span {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.dashboard-thresholds-section {
+  margin-bottom: 40px;
+}
+
+.thresholds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.threshold-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: var(--transition);
+  border-left: 3px solid var(--t-color);
+}
+
+.threshold-card:hover {
+  background: var(--bg-card-hover);
+}
+
+.threshold-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--t-color);
+  box-shadow: 0 0 8px var(--t-color);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.threshold-body {
+  flex: 1;
+}
+
+.threshold-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--t-color);
+  margin-bottom: 4px;
+}
+
+.threshold-angle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 2px;
+}
+
+.threshold-range {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.threshold-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}

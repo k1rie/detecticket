@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Backgrounds */
+  --bg-primary:    #0d0d0d;
+  --bg-secondary:  #141414;
+  --bg-card:       #1a1a1a;
+  --bg-card-hover: #202020;
+  --bg-elevated:   #272727;
+  --bg-input:      #161616;
+
+  /* Borders */
+  --border-subtle:  rgba(255, 255, 255, 0.07);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-accent:  rgba(196, 168, 130, 0.35);
+  --border-input:   rgba(255, 255, 255, 0.14);
+
+  /* Accent — warm beige */
+  --accent:               #c4a882;
+  --accent-dim:           rgba(196, 168, 130, 0.14);
+  --accent-glow:          rgba(196, 168, 130, 0.22);
+  --accent-hover:         #d6ba92;
+  --accent-secondary:     #b09070;
+  --accent-secondary-dim: rgba(176, 144, 112, 0.14);
+
+  /* Text */
+  --text-primary:   #f0ebe3;
+  --text-secondary: #a89880;
+  --text-muted:     #6b6055;
+  --text-accent:    #c4a882;
+
+  /* Status */
+  --status-duplicate:        #f06072;
+  --status-duplicate-bg:     rgba(240, 96, 114, 0.12);
+  --status-duplicate-border: rgba(240, 96, 114, 0.3);
+
+  --status-related:        #e0924a;
+  --status-related-bg:     rgba(224, 146, 74, 0.12);
+  --status-related-border: rgba(224, 146, 74, 0.3);
+
+  --status-different:        #5cbd82;
+  --status-different-bg:     rgba(92, 189, 130, 0.12);
+  --status-different-border: rgba(92, 189, 130, 0.3);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+
+  /* Shadows */
+  --shadow-card:     0 2px 16px rgba(0, 0, 0, 0.5);
+  --shadow-elevated: 0 6px 32px rgba(0, 0, 0, 0.7);
+  --shadow-accent:   0 0 20px rgba(196, 168, 130, 0.12);
+
+  --transition: 0.18s ease;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root { height: 100%; }
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: var(--font); }
+input, textarea { font-family: var(--font); outline: none; }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.06); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* ── Shared page headings ── */
+.page-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: var(--accent);
+  color: #0d0d0d;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  letter-spacing: 0.01em;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--shadow-accent);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-default);
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.btn-ghost:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+/* ── Inputs ── */
+.input-field {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  padding: 9px 13px;
+  color: var(--text-primary);
+  font-size: 13px;
+  transition: var(--transition);
+}
+
+.input-field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+.input-field::placeholder { color: var(--text-muted); }
+
+.textarea-field {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  transition: var(--transition);
+}
+
+.card:hover { border-color: rgba(255, 255, 255, 0.09); }
+
+/* ── Label ── */
+.label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+/* ── Field group ── */
+.field-group { margin-bottom: 14px; }
+
+/* ── Spinner ── */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid rgba(196, 168, 130, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+
+/* ── Global responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .page-eyebrow { font-size: 9px; }
+  .page-title   { font-size: 22px; }
+  .page-subtitle { font-size: 12px; }
+
+  .btn-primary, .btn-secondary, .btn-ghost {
+    font-size: 12px;
+    padding: 7px 13px;
+  }
+
+  .input-field  { font-size: 14px; } /* iOS zoom prevention */
+  .textarea-field { font-size: 14px; }
+}

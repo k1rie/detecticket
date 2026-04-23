@@ -1,0 +1,68 @@
+.angle-meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.angle-meter-svg {
+  width: 160px;
+  height: 160px;
+}
+
+.angle-meter-value {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font);
+}
+
+.angle-meter-label {
+  font-size: 10px;
+  font-weight: 500;
+  font-family: var(--font);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.angle-meter-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.angle-meter-formula {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+  background: var(--bg-elevated);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-default);
+  white-space: nowrap;
+}
+
+.formula-highlight {
+  color: var(--accent);
+}
+
+.angle-meter-deg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.angle-meter-deg-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.angle-meter-deg-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}

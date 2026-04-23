@@ -1,0 +1,331 @@
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page {
+  padding: 48px 52px;
+  max-width: 1080px;
+  margin: 0 auto;
+  animation: fadeUp 0.28s cubic-bezier(.22,1,.36,1) both;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+  gap: 24px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 460px;
+}
+
+.modelStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.statusPill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid;
+}
+
+.statusReady {
+  color: var(--status-different);
+  background: var(--status-different-bg);
+  border-color: var(--status-different-border);
+}
+
+.statusLoading, .statusIdle {
+  color: var(--status-related);
+  background: var(--status-related-bg);
+  border-color: var(--status-related-border);
+}
+
+.statusError, .statusUnknown {
+  color: var(--status-duplicate);
+  background: var(--status-duplicate-bg);
+  border-color: var(--status-duplicate-border);
+}
+
+.modelName {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 48px;
+}
+
+.featureCard {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  text-align: left;
+  transition: var(--transition);
+  cursor: pointer;
+  width: 100%;
+}
+
+.featureCard:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-accent);
+  transform: translateY(-1px);
+}
+
+.featureIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.featureBody { flex: 1; }
+
+.featureTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.featureDesc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.featureArrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.featureCard:hover .featureArrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+.sectionTitle {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 18px;
+}
+
+.formulaSection { margin-bottom: 48px; }
+
+.formulaBlock {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.formulaDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 36px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+}
+
+.formulaName {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.formulaEq {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Courier New', monospace;
+  font-size: 17px;
+  color: var(--text-primary);
+}
+
+.formulaTheta {
+  color: var(--accent);
+  font-style: italic;
+  font-size: 19px;
+}
+
+.formulaOp { color: var(--text-muted); }
+.formulaFn { color: var(--text-secondary); }
+
+.formulaParen {
+  color: var(--text-muted);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.formulaFraction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.formulaNum, .formulaDen { padding: 0 3px; font-size: 13px; }
+
+.formulaDivLine {
+  width: 100%;
+  height: 1px;
+  background: var(--text-muted);
+}
+
+.formulaHighlight { color: var(--accent); }
+
+.formulaLegend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.legendItem {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.legendItem code {
+  font-size: 12px;
+  color: var(--accent);
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+}
+
+.legendItem span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.thresholdsSection { margin-bottom: 48px; }
+
+.thresholdsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.thresholdCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  transition: var(--transition);
+  border-left: 2px solid var(--t-color);
+}
+
+.thresholdCard:hover { background: var(--bg-card-hover); }
+
+.thresholdDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--t-color);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.thresholdBody { flex: 1; }
+
+.thresholdLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--t-color);
+  margin-bottom: 3px;
+}
+
+.thresholdAngle {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 2px;
+}
+
+.thresholdRange {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-bottom: 7px;
+}
+
+.thresholdDesc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .page { padding: 20px 14px; }
+  .header { flex-direction: column; gap: 12px; }
+}

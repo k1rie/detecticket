@@ -1,0 +1,66 @@
+.meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.svg {
+  width: 150px;
+  height: 150px;
+}
+
+.value {
+  font-size: 21px;
+  font-weight: 700;
+  font-family: var(--font);
+}
+
+.meterLabel {
+  font-size: 9px;
+  font-weight: 500;
+  font-family: var(--font);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.formula {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+  background: var(--bg-elevated);
+  padding: 5px 11px;
+  border-radius: 5px;
+  border: 1px solid var(--border-default);
+  white-space: nowrap;
+}
+
+.highlight { color: var(--accent); }
+
+.degRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.degValue {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.degLabel {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

@@ -1,0 +1,98 @@
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-card);
+}
+
+.cardDuplicate { border-color: var(--status-duplicate-border); }
+.cardRelated   { border-color: var(--status-related-border); }
+.cardDifferent { border-color: var(--status-different-border); }
+
+.header { margin-bottom: 22px; }
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vs {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0;
+}
+
+.vs span {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.14em;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+.meterCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.statLabel {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.statValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+}

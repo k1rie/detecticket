@@ -1,0 +1,137 @@
+.sidebar {
+  width: 210px;
+  min-width: 210px;
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 2px 8px 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 20px;
+}
+
+.logoIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: 20px;
+}
+
+.navLabel {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0 8px 7px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.18s;
+  border: 1px solid transparent;
+}
+
+.link:hover {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  transform: translateX(2px);
+}
+
+.linkActive {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-color: var(--border-accent);
+}
+
+.linkActive:hover {
+  background: rgba(196, 168, 130, 0.12);
+  color: var(--accent);
+}
+
+.footer {
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.modelBadge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-default);
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.modelDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--status-different);
+  box-shadow: 0 0 5px var(--status-different);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(.22,1,.36,1);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+}

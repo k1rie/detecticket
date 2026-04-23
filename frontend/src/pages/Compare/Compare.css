@@ -1,0 +1,140 @@
+.compare-page {
+  padding: 40px 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.compare-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 36px;
+  gap: 24px;
+}
+
+.page-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.compare-actions-top {
+  flex-shrink: 0;
+}
+
+.examples-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.examples-row {
+  display: flex;
+  gap: 8px;
+}
+
+.compare-inputs {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  margin-bottom: 24px;
+  align-items: start;
+}
+
+.ticket-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ticket-input-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ticket-input-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.compare-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  gap: 8px;
+  align-self: center;
+  margin-top: 24px;
+}
+
+.compare-divider-line {
+  width: 1px;
+  height: 40px;
+  background: var(--border-default);
+}
+
+.compare-divider-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.compare-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.compare-error {
+  background: var(--status-duplicate-bg);
+  border: 1px solid var(--status-duplicate-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--status-duplicate);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.compare-result {
+  margin-top: 8px;
+}

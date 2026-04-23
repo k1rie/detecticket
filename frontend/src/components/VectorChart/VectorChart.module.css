@@ -1,0 +1,28 @@
+@keyframes drawVec {
+  from { stroke-dashoffset: 200; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes drawArc {
+  from { stroke-dashoffset: 400; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.vecDraw {
+  stroke-dasharray: 200;
+  animation: drawVec 0.45s cubic-bezier(.22,1,.36,1) 0.2s both;
+}
+
+.arcDraw {
+  stroke-dasharray: 400;
+  animation: drawArc 0.6s cubic-bezier(.22,1,.36,1) 0.5s both;
+}
+
+.arrowFade {
+  animation: fadeIn 0.3s ease 0.5s both;
+}

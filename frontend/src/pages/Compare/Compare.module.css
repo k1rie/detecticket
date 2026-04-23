@@ -1,0 +1,272 @@
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page {
+  padding: 48px 52px;
+  max-width: 960px;
+  margin: 0 auto;
+  animation: fadeUp 0.28s cubic-bezier(.22,1,.36,1) both;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 36px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.examplesRow {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  margin-bottom: 28px;
+}
+
+.inputCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  padding: 20px;
+}
+
+.inputCardB {
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  border-left: none;
+}
+
+.inputLabel {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  gap: 6px;
+}
+
+.dividerLine {
+  flex: 1;
+  width: 1px;
+  background: var(--border-default);
+}
+
+.dividerIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.error {
+  background: var(--status-duplicate-bg);
+  border: 1px solid var(--status-duplicate-border);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  color: var(--status-duplicate);
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
+.result { margin-top: 0; }
+
+/* ── Vector visualization ─────────────────────────────────────── */
+.vectorSection {
+  margin-top: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.vectorHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 14px 18px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.vectorTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.vectorSub {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+}
+
+.vectorBody {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.chartWrap {
+  flex-shrink: 0;
+  padding: 18px 14px 10px 14px;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.thresholdLegend {
+  display: flex;
+  gap: 12px;
+  padding: 0 4px;
+}
+
+.thLegItem {
+  font-size: 9px;
+  font-family: 'Courier New', monospace;
+  color: var(--lc, var(--text-muted));
+  opacity: 0.75;
+  letter-spacing: 0.03em;
+}
+
+/* ── Stats panel ──────────────────────────────────────────────── */
+.vectorStats {
+  flex: 1;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.vStat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.vStatLabel {
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.vStatValue {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  line-height: 1;
+}
+
+.vStatUnit {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.vStatBar {
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.vStatFill {
+  height: 100%;
+  border-radius: 2px;
+  animation: barGrow 0.55s cubic-bezier(.22,1,.36,1) 0.3s both;
+  transform-origin: left;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.thresholdRows {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.thRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.thDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.thVal {
+  margin-left: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@media (max-width: 768px) {
+  .page { padding: 20px 14px; }
+  .header { flex-direction: column; gap: 12px; }
+  .inputs { grid-template-columns: 1fr; }
+  .inputCard { border-radius: var(--radius-lg) !important; border: 1px solid var(--border-default) !important; }
+  .divider { flex-direction: row; padding: 10px 0; gap: 8px; }
+  .dividerLine { flex: 1; height: 1px; width: auto; }
+  .controls { justify-content: stretch; }
+  .controls button { flex: 1; justify-content: center; }
+  .vectorBody { flex-direction: column; }
+  .chartWrap { border-right: none; border-bottom: 1px solid var(--border-subtle); width: 100%; }
+  .chartWrap svg { width: 100%; height: auto; }
+}

@@ -1,0 +1,121 @@
+.result-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-card);
+}
+
+.result-card--duplicate {
+  border-color: var(--status-duplicate-border);
+  box-shadow: 0 4px 32px rgba(255, 69, 96, 0.1);
+}
+
+.result-card--related {
+  border-color: var(--status-related-border);
+  box-shadow: 0 4px 32px rgba(255, 170, 0, 0.08);
+}
+
+.result-card--different {
+  border-color: var(--status-different-border);
+  box-shadow: 0 4px 32px rgba(0, 229, 160, 0.06);
+}
+
+.result-card-header {
+  margin-bottom: 24px;
+}
+
+.result-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.result-card-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.result-tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-vs {
+  display: flex;
+  justify-content: center;
+  padding: 6px 0;
+}
+
+.result-vs span {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.result-meter-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+.result-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.result-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.result-stat-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.result-stat-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+}
+
+@media (max-width: 768px) {
+  .result-card-body {
+    grid-template-columns: 1fr;
+  }
+
+  .result-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
