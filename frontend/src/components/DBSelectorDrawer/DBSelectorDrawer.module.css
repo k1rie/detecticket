@@ -312,3 +312,57 @@
   font-weight: 600;
   color: var(--text-secondary);
 }
+
+@media (max-width: 768px) {
+  .drawer {
+    width: 100%;
+    max-width: 100%;
+    border-left: none;
+  }
+
+  .drawerHeader {
+    padding: 14px 14px 12px;
+  }
+
+  .drawerTitle { font-size: 13px; }
+  .drawerSubtitle { font-size: 11px; }
+
+  .searchRow {
+    flex-wrap: wrap;
+    padding: 10px 12px 8px;
+  }
+
+  .searchWrap { flex: 1 1 100%; }
+
+  .searchInput { font-size: 14px; }
+
+  .bulkRow {
+    padding: 0 12px 8px;
+    flex-wrap: wrap;
+  }
+
+  .list { padding: 0 4px; }
+
+  .ticketRow {
+    padding: 12px 10px;
+  }
+
+  .ticketTitle { font-size: 13px; }
+
+  .footer {
+    padding: 12px 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer button {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .filterDropdown {
+    right: 12px;
+    left: 12px;
+    min-width: unset;
+  }
+}

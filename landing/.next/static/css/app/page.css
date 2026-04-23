@@ -713,3 +713,164 @@
 .page_footerLogo__LcRrq { font-weight: 700; color: var(--text2); letter-spacing: -0.01em; }
 .page_footerLogo__LcRrq span { color: var(--accent); }
 
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .page_navbar__k3RMs { padding: 18px 32px; }
+  .page_hero__7KFOs { padding: 110px 32px 70px; }
+  .page_section__zQZ2o { padding: 80px 32px; }
+  .page_sectionFull__8PY2t { padding: 80px 32px; }
+  .page_cta__i2v5_ { padding: 100px 32px; }
+  .page_footer__F3MD0 { padding: 28px 32px; }
+
+  .page_about__YOpBg { gap: 56px; }
+  .page_formulaSection__1LUP9 { gap: 40px; }
+  .page_stepsGrid__svYG0 { grid-template-columns: repeat(2, 1fr); }
+  .page_techGrid__BAqMi { grid-template-columns: repeat(2, 1fr); }
+  .page_heroStats__ozT57 { gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .page_navbar__k3RMs { padding: 14px 20px; }
+  .page_navLogo__XrZYK { font-size: 13px; }
+  .page_navCta__hU4J_ { padding: 7px 14px; font-size: 11px; }
+
+  .page_hero__7KFOs {
+    padding: 100px 20px 56px;
+    min-height: auto;
+  }
+
+  .page_heroEyebrow__p76B6 {
+    font-size: 10px;
+    padding: 4px 12px;
+    margin-bottom: 24px;
+  }
+
+  .page_heroTitle__ixXIp { margin-bottom: 20px; }
+  .page_heroSub__fi66w { font-size: 14px; margin-bottom: 36px; }
+
+  .page_heroActions__uE8fj {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .page_heroBtnPrimary__gAgKo,
+  .page_heroBtnGhost__F0Iat {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+
+  .page_heroStats__ozT57 {
+    margin-top: 52px;
+    padding-top: 32px;
+    gap: 22px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .page_heroStat__7idii { min-width: 80px; }
+  .page_heroStatValue__DWfNS { font-size: 22px; }
+  .page_heroStatLabel__iTFrE { font-size: 10px; }
+
+  .page_section__zQZ2o { padding: 64px 20px; }
+  .page_sectionFull__8PY2t { padding: 64px 20px; }
+  .page_sectionSub__ISJaj { font-size: 13px; }
+
+  /* About: stack */
+  .page_about__YOpBg {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .page_aboutVisual__Id72Q {
+    aspect-ratio: auto;
+    min-height: 280px;
+  }
+
+  .page_aboutCircle__0mwt_ { width: 220px; height: 220px; }
+  .page_aboutCircleInner__QU0ax { width: 150px; height: 150px; }
+  .page_aboutCircleValue__4Per4 { font-size: 30px; }
+
+  .page_aboutDesc__gK4__ { font-size: 14px; }
+
+  /* Principles */
+  .page_principle__I9S7N {
+    gap: 18px;
+    padding: 24px 0;
+  }
+  .page_principle__I9S7N:hover { padding-left: 10px; }
+  .page_principleNum__N0U6t { min-width: 32px; font-size: 10px; }
+  .page_principleTitle__fHurh { font-size: 16px; }
+  .page_principleDesc__gkH7v { font-size: 12px; }
+
+  /* Formula: stack */
+  .page_formulaSection__1LUP9 {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .page_formulaDisplay__HA6_e { padding: 28px 20px; }
+  .page_formulaEq__NOsEz { font-size: 17px; gap: 6px; flex-wrap: wrap; justify-content: center; }
+  .page_formulaParen__hHrmP { font-size: 22px; }
+  .page_formulaFractionText__O7nFI { font-size: 13px; }
+
+  .page_formulaDesc__ld1vF { font-size: 12px; }
+
+  /* Tech grid */
+  .page_techGrid__BAqMi { gap: 10px; margin-top: 36px; }
+  .page_techCard__PPVt_ { padding: 20px; }
+  .page_techCardTitle__60PDK { font-size: 13px; }
+  .page_techCardDesc__90JCZ { font-size: 11px; }
+
+  /* Steps */
+  .page_stepsGrid__svYG0 {
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+  }
+  .page_step__0ZyaY { padding: 26px 22px; }
+
+  /* CTA */
+  .page_cta__i2v5_ {
+    padding: 80px 20px;
+  }
+  .page_ctaSub__ACA_V { font-size: 14px; margin-bottom: 32px; }
+  .page_ctaBtn__Q_Mcf { padding: 14px 28px; font-size: 13px; }
+
+  /* Footer */
+  .page_footer__F3MD0 {
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 20px;
+    text-align: center;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page_navbar__k3RMs { padding: 12px 16px; }
+  .page_hero__7KFOs { padding: 90px 16px 48px; }
+  .page_section__zQZ2o { padding: 52px 16px; }
+  .page_sectionFull__8PY2t { padding: 52px 16px; }
+
+  .page_heroStats__ozT57 {
+    gap: 16px 22px;
+  }
+
+  .page_heroStatValue__DWfNS { font-size: 20px; }
+
+  /* Tech/Steps: 1 column */
+  .page_techGrid__BAqMi { grid-template-columns: 1fr; }
+
+  .page_aboutCircle__0mwt_ { width: 190px; height: 190px; }
+  .page_aboutCircleInner__QU0ax { width: 130px; height: 130px; }
+  .page_aboutCircleValue__4Per4 { font-size: 26px; }
+
+  .page_formulaEq__NOsEz { font-size: 15px; }
+  .page_formulaFractionText__O7nFI { font-size: 12px; }
+
+  .page_cta__i2v5_ { padding: 64px 16px; }
+
+  .page_footer__F3MD0 { padding: 20px 16px; }
+}
+

@@ -95,21 +95,26 @@ function VectorMap({ tickets, results }) {
     return s;
   }, [n, results]);
 
-  const W = 620, H = 400;
-  const ox = W / 2, oy = H / 2;   // origin = centre
-  const VL = Math.min(W, H) * 0.36; // arrow length in px
+  const W = 700, H = 460;
+  const ox = W / 2, oy = H / 2;
+  const VL = Math.min(W, H) * 0.34;
 
-  // Convert unit direction → SVG tip (y-axis flipped)
   const tip = (d) => [ox + d.x * VL, oy - d.y * VL];
 
-  // Angle between two unit-direction vectors (for arc labels on close pairs)
-  const nonDiff = results.filter(r => r.status !== 'different');
+  // Pairs sorted: duplicate first so their lines render above 'different'
+  const sortedResults = useMemo(() =>
+    [...results].sort((a, b) => {
+      const rank = { different: 0, related: 1, duplicate: 2 };
+      return rank[a.status] - rank[b.status];
+    }), [results]);
+
+  const STATUS_LABEL = { duplicate: 'Duplicado', related: 'Relacionado', different: 'Diferente' };
 
   return (
     <div className={styles.mapSection}>
       <div className={styles.mapHeader}>
         <span className={styles.mapTitle}>Plano Vectorial</span>
-        <span className={styles.mapSub}>Cada ticket es un vector desde el origen — vectores cercanos = tickets similares</span>
+        <span className={styles.mapSub}>Vectores más cercanos = mayor similitud semántica</span>
         <div className={styles.mapLegend}>
           {[['duplicate','Duplicado'],['related','Relacionado'],['different','Diferente']].map(([s, l]) => (
             <span key={s} className={styles.mapLegendItem}>
@@ -121,88 +126,159 @@ function VectorMap({ tickets, results }) {
 
       <div className={styles.mapBody}>
         <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: 'block' }}>
+          <defs>
+            {/* Radial gradient background on origin */}
+            <radialGradient id="originGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.06)" />
+              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+            </radialGradient>
+          </defs>
 
-          {/* Reference circle */}
-          <circle cx={ox} cy={oy} r={VL}
-            fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="1" strokeDasharray="3 6" />
-          <circle cx={ox} cy={oy} r={VL * 0.5}
-            fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1" strokeDasharray="2 6" />
+          {/* Soft radial glow at origin */}
+          <circle cx={ox} cy={oy} r={VL * 1.1} fill="url(#originGlow)" />
 
-          {/* X / Y axes */}
-          <line x1={ox - VL - 18} y1={oy} x2={ox + VL + 18} y2={oy}
-            stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-          <line x1={ox} y1={oy - VL - 18} x2={ox} y2={oy + VL + 18}
-            stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-          <text x={ox + VL + 22} y={oy + 4} fill="rgba(255,255,255,0.18)"
-            fontSize="10" fontFamily="'Courier New',monospace" dominantBaseline="middle">x</text>
-          <text x={ox + 4} y={oy - VL - 20} fill="rgba(255,255,255,0.18)"
-            fontSize="10" fontFamily="'Courier New',monospace" dominantBaseline="middle">y</text>
+          {/* Reference rings */}
+          {[0.33, 0.66, 1.0].map((f, i) => (
+            <circle key={i} cx={ox} cy={oy} r={VL * f}
+              fill="none"
+              stroke={i === 2 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.05)'}
+              strokeWidth={i === 2 ? '1.5' : '1'}
+              strokeDasharray={i === 2 ? undefined : '3 5'} />
+          ))}
 
-          {/* Angle arcs between non-different pairs (only if ≤ 8 total) */}
-          {n <= 8 && nonDiff.map((r, i) => {
-            const aA = Math.atan2(dirs[r.indexA].y, dirs[r.indexA].x);
-            const aB = Math.atan2(dirs[r.indexB].y, dirs[r.indexB].x);
-            let diff = aB - aA;
-            while (diff > Math.PI)  diff -= 2 * Math.PI;
-            while (diff < -Math.PI) diff += 2 * Math.PI;
-            const arcR = VL * 0.22;
-            const ex = ox + arcR * Math.cos(aA + diff);
-            const ey = oy - arcR * Math.sin(aA + diff);
-            const sx = ox + arcR * Math.cos(aA);
-            const sy = oy - arcR * Math.sin(aA);
-            const large = Math.abs(diff) > Math.PI ? 1 : 0;
-            const sweep = diff > 0 ? 0 : 1;
+          {/* Diagonal guide lines (45°, 135°) */}
+          {[45, 135].map((deg, i) => {
+            const r = deg * Math.PI / 180;
             return (
-              <path key={i}
-                d={`M ${sx.toFixed(1)} ${sy.toFixed(1)} A ${arcR} ${arcR} 0 ${large} ${sweep} ${ex.toFixed(1)} ${ey.toFixed(1)}`}
-                fill="none"
-                stroke={STATUS_COLOR[r.status]}
-                strokeWidth="1"
-                strokeOpacity="0.35"
-                strokeDasharray={r.status === 'related' ? '3 2' : undefined}
-              />
+              <line key={i}
+                x1={(ox - VL * 1.05 * Math.cos(r)).toFixed(1)}
+                y1={(oy + VL * 1.05 * Math.sin(r)).toFixed(1)}
+                x2={(ox + VL * 1.05 * Math.cos(r)).toFixed(1)}
+                y2={(oy - VL * 1.05 * Math.sin(r)).toFixed(1)}
+                stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
             );
           })}
 
-          {/* Vector arrows */}
-          {dirs.map((d, i) => {
-            const [tx, ty] = tip(d);
-            const col   = STATUS_COLOR[ticketStatus[i]];
-            const title = tickets[i].title;
-            const label = title.length > 22 ? title.slice(0, 20) + '…' : title;
+          {/* X / Y axes */}
+          <line x1={ox - VL - 24} y1={oy} x2={ox + VL + 24} y2={oy}
+            stroke="rgba(255,255,255,0.14)" strokeWidth="1.5" />
+          <line x1={ox} y1={oy - VL - 24} x2={ox} y2={oy + VL + 24}
+            stroke="rgba(255,255,255,0.14)" strokeWidth="1.5" />
+          {/* Axis arrowheads */}
+          <polygon points={`${ox + VL + 24},${oy} ${ox + VL + 16},${oy - 4} ${ox + VL + 16},${oy + 4}`}
+            fill="rgba(255,255,255,0.2)" />
+          <polygon points={`${ox},${oy - VL - 24} ${ox - 4},${oy - VL - 16} ${ox + 4},${oy - VL - 16}`}
+            fill="rgba(255,255,255,0.2)" />
+          <text x={ox + VL + 28} y={oy} fill="rgba(255,255,255,0.3)"
+            fontSize="11" fontFamily="'Courier New',monospace" dominantBaseline="middle" fontWeight="700">x</text>
+          <text x={ox + 5} y={oy - VL - 26} fill="rgba(255,255,255,0.3)"
+            fontSize="11" fontFamily="'Courier New',monospace" dominantBaseline="middle" fontWeight="700">y</text>
 
-            // Push label away from origin
-            const lx = ox + d.x * (VL + 22);
-            const ly = oy - d.y * (VL + 22);
-            const anchor = d.x > 0.1 ? 'start' : d.x < -0.1 ? 'end' : 'middle';
-
+          {/* ── Similarity connecting lines between non-different pairs ── */}
+          {sortedResults.filter(r => r.status !== 'different').map((r, i) => {
+            const [ax, ay] = tip(dirs[r.indexA]);
+            const [bx, by] = tip(dirs[r.indexB]);
+            const mx = (ax + bx) / 2, my = (ay + by) / 2;
+            const col = STATUS_COLOR[r.status];
             return (
-              <g key={i} className={styles.mapNode}
-                style={{ animationDelay: `${i * 60}ms` }}>
-                {/* Arrow shaft */}
-                <line x1={ox} y1={oy} x2={tx.toFixed(1)} y2={ty.toFixed(1)}
-                  stroke={col} strokeWidth="2" strokeOpacity="0.75" strokeLinecap="round" />
-                {/* Arrowhead */}
-                <polygon points={arrowHead(ox, oy, tx, ty)} fill={col} fillOpacity="0.9" />
-                {/* Tip circle with index */}
-                <circle cx={tx.toFixed(1)} cy={ty.toFixed(1)} r="9"
-                  fill={col} fillOpacity="0.12" stroke={col} strokeWidth="1.2" />
-                <text x={tx.toFixed(1)} y={ty.toFixed(1)}
-                  fill={col} fontSize="9" fontWeight="700" fontFamily="var(--font)"
-                  textAnchor="middle" dominantBaseline="middle">{i + 1}</text>
-                {/* Title label outside circle */}
-                <text x={lx.toFixed(1)} y={ly.toFixed(1)}
-                  fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="var(--font)"
-                  textAnchor={anchor} dominantBaseline="middle">{label}</text>
+              <g key={`conn-${i}`}>
+                <line x1={ax.toFixed(1)} y1={ay.toFixed(1)}
+                      x2={bx.toFixed(1)} y2={by.toFixed(1)}
+                  stroke={col} strokeWidth="1.2" strokeOpacity="0.3"
+                  strokeDasharray={r.status === 'related' ? '4 3' : undefined} />
+                <text x={mx.toFixed(1)} y={my.toFixed(1)}
+                  fill={col} fontSize="10" fontWeight="700"
+                  textAnchor="middle" dominantBaseline="middle"
+                  style={{ paintOrder: 'stroke' }}
+                  stroke="rgba(0,0,0,0.9)" strokeWidth="3">
+                  {r.similarity.toFixed(1)}%
+                </text>
               </g>
             );
           })}
 
-          {/* Origin dot */}
-          <circle cx={ox} cy={oy} r="4" fill="rgba(255,255,255,0.2)" />
-          <circle cx={ox} cy={oy} r="2" fill="rgba(255,255,255,0.5)" />
+          {/* ── Vector arrows (rendered last so they sit above connecting lines) ── */}
+          {dirs.map((d, i) => {
+            const [tx, ty] = tip(d);
+            const col   = STATUS_COLOR[ticketStatus[i]];
+            const title = tickets[i].title;
+            const label = title.length > 26 ? title.slice(0, 24) + '…' : title;
+            const lx = ox + d.x * (VL + 44);
+            const ly = oy - d.y * (VL + 44);
+            const anchor = d.x > 0.15 ? 'start' : d.x < -0.15 ? 'end' : 'middle';
+
+            return (
+              <g key={i} className={styles.mapNode} style={{ animationDelay: `${i * 60}ms` }}>
+                {/* Arrow shaft */}
+                <line x1={ox} y1={oy} x2={tx.toFixed(1)} y2={ty.toFixed(1)}
+                  stroke={col} strokeWidth="2.5" strokeLinecap="round" />
+                {/* Arrowhead */}
+                <polygon points={arrowHead(ox, oy, tx, ty, 9)} fill={col} />
+                {/* Tip glow */}
+                <circle cx={tx.toFixed(1)} cy={ty.toFixed(1)} r="17"
+                  fill={col} fillOpacity="0.07" />
+                {/* Tip circle */}
+                <circle cx={tx.toFixed(1)} cy={ty.toFixed(1)} r="13"
+                  fill={col} fillOpacity="0.22" stroke={col} strokeWidth="1.5" />
+                {/* Index number */}
+                <text x={tx.toFixed(1)} y={ty.toFixed(1)}
+                  fill={col} fontSize="11" fontWeight="800" fontFamily="var(--font)"
+                  textAnchor="middle" dominantBaseline="middle">{i + 1}</text>
+                {/* Title label with dark halo for legibility */}
+                <text x={lx.toFixed(1)} y={ly.toFixed(1)}
+                  fill="rgba(255,255,255,0.88)" fontSize="11" fontFamily="var(--font)"
+                  textAnchor={anchor} dominantBaseline="middle"
+                  style={{ paintOrder: 'stroke' }}
+                  stroke="rgba(0,0,0,0.88)" strokeWidth="5">
+                  {label}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Origin */}
+          <circle cx={ox} cy={oy} r="6" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
+          <circle cx={ox} cy={oy} r="2.5" fill="rgba(255,255,255,0.7)" />
+          <text x={ox + 9} y={oy - 8} fill="rgba(255,255,255,0.25)"
+            fontSize="9" fontFamily="'Courier New',monospace">O</text>
         </svg>
       </div>
+
+      {/* ── Pair comparison table ── */}
+      {results.length <= 28 && (
+        <div className={styles.mapTable}>
+          <div className={styles.mapTableHeader}>
+            <span>Par</span>
+            <span>Similitud</span>
+            <span>Ángulo</span>
+            <span>Estado</span>
+          </div>
+          {sortedResults.slice().reverse().map((r, i) => (
+            <div key={i} className={styles.mapTableRow}
+              style={{ borderLeftColor: STATUS_COLOR[r.status] }}>
+              <span className={styles.mapTablePair}>
+                <span className={styles.mapTableBadge} style={{ background: STATUS_COLOR[ticketStatus[r.indexA]] + '22', color: STATUS_COLOR[ticketStatus[r.indexA]], borderColor: STATUS_COLOR[ticketStatus[r.indexA]] + '55' }}>
+                  {r.indexA + 1}
+                </span>
+                <span className={styles.mapTableSep}>↔</span>
+                <span className={styles.mapTableBadge} style={{ background: STATUS_COLOR[ticketStatus[r.indexB]] + '22', color: STATUS_COLOR[ticketStatus[r.indexB]], borderColor: STATUS_COLOR[ticketStatus[r.indexB]] + '55' }}>
+                  {r.indexB + 1}
+                </span>
+                <span className={styles.mapTableTitle}>
+                  {tickets[r.indexA].title.length > 18 ? tickets[r.indexA].title.slice(0, 16) + '…' : tickets[r.indexA].title}
+                  {' '}<span style={{ color: 'var(--text-muted)' }}>vs</span>{' '}
+                  {tickets[r.indexB].title.length > 18 ? tickets[r.indexB].title.slice(0, 16) + '…' : tickets[r.indexB].title}
+                </span>
+              </span>
+              <span className={styles.mapTableSim} style={{ color: STATUS_COLOR[r.status] }}>
+                {r.similarity.toFixed(1)}%
+              </span>
+              <span className={styles.mapTableAngle}>{r.angleDeg.toFixed(1)}°</span>
+              <StatusBadge status={r.status} />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

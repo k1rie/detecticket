@@ -704,3 +704,164 @@
 
 .footerLogo { font-weight: 700; color: var(--text2); letter-spacing: -0.01em; }
 .footerLogo span { color: var(--accent); }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .navbar { padding: 18px 32px; }
+  .hero { padding: 110px 32px 70px; }
+  .section { padding: 80px 32px; }
+  .sectionFull { padding: 80px 32px; }
+  .cta { padding: 100px 32px; }
+  .footer { padding: 28px 32px; }
+
+  .about { gap: 56px; }
+  .formulaSection { gap: 40px; }
+  .stepsGrid { grid-template-columns: repeat(2, 1fr); }
+  .techGrid { grid-template-columns: repeat(2, 1fr); }
+  .heroStats { gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .navbar { padding: 14px 20px; }
+  .navLogo { font-size: 13px; }
+  .navCta { padding: 7px 14px; font-size: 11px; }
+
+  .hero {
+    padding: 100px 20px 56px;
+    min-height: auto;
+  }
+
+  .heroEyebrow {
+    font-size: 10px;
+    padding: 4px 12px;
+    margin-bottom: 24px;
+  }
+
+  .heroTitle { margin-bottom: 20px; }
+  .heroSub { font-size: 14px; margin-bottom: 36px; }
+
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .heroBtnPrimary,
+  .heroBtnGhost {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+
+  .heroStats {
+    margin-top: 52px;
+    padding-top: 32px;
+    gap: 22px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .heroStat { min-width: 80px; }
+  .heroStatValue { font-size: 22px; }
+  .heroStatLabel { font-size: 10px; }
+
+  .section { padding: 64px 20px; }
+  .sectionFull { padding: 64px 20px; }
+  .sectionSub { font-size: 13px; }
+
+  /* About: stack */
+  .about {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .aboutVisual {
+    aspect-ratio: auto;
+    min-height: 280px;
+  }
+
+  .aboutCircle { width: 220px; height: 220px; }
+  .aboutCircleInner { width: 150px; height: 150px; }
+  .aboutCircleValue { font-size: 30px; }
+
+  .aboutDesc { font-size: 14px; }
+
+  /* Principles */
+  .principle {
+    gap: 18px;
+    padding: 24px 0;
+  }
+  .principle:hover { padding-left: 10px; }
+  .principleNum { min-width: 32px; font-size: 10px; }
+  .principleTitle { font-size: 16px; }
+  .principleDesc { font-size: 12px; }
+
+  /* Formula: stack */
+  .formulaSection {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .formulaDisplay { padding: 28px 20px; }
+  .formulaEq { font-size: 17px; gap: 6px; flex-wrap: wrap; justify-content: center; }
+  .formulaParen { font-size: 22px; }
+  .formulaFractionText { font-size: 13px; }
+
+  .formulaDesc { font-size: 12px; }
+
+  /* Tech grid */
+  .techGrid { gap: 10px; margin-top: 36px; }
+  .techCard { padding: 20px; }
+  .techCardTitle { font-size: 13px; }
+  .techCardDesc { font-size: 11px; }
+
+  /* Steps */
+  .stepsGrid {
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+  }
+  .step { padding: 26px 22px; }
+
+  /* CTA */
+  .cta {
+    padding: 80px 20px;
+  }
+  .ctaSub { font-size: 14px; margin-bottom: 32px; }
+  .ctaBtn { padding: 14px 28px; font-size: 13px; }
+
+  /* Footer */
+  .footer {
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 20px;
+    text-align: center;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar { padding: 12px 16px; }
+  .hero { padding: 90px 16px 48px; }
+  .section { padding: 52px 16px; }
+  .sectionFull { padding: 52px 16px; }
+
+  .heroStats {
+    gap: 16px 22px;
+  }
+
+  .heroStatValue { font-size: 20px; }
+
+  /* Tech/Steps: 1 column */
+  .techGrid { grid-template-columns: 1fr; }
+
+  .aboutCircle { width: 190px; height: 190px; }
+  .aboutCircleInner { width: 130px; height: 130px; }
+  .aboutCircleValue { font-size: 26px; }
+
+  .formulaEq { font-size: 15px; }
+  .formulaFractionText { font-size: 12px; }
+
+  .cta { padding: 64px 16px; }
+
+  .footer { padding: 20px 16px; }
+}

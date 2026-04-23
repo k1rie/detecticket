@@ -638,19 +638,148 @@ details[open] .pairSummary::before { transform: rotate(90deg); }
   to   { opacity: 1; transform: scale(1); }
 }
 
+/* ── Pair comparison table ── */
+.mapTable {
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.mapTableHeader {
+  display: grid;
+  grid-template-columns: 1fr 80px 72px 100px;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+
+.mapTableRow {
+  display: grid;
+  grid-template-columns: 1fr 80px 72px 100px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  border-left: 3px solid transparent;
+  transition: background 0.15s;
+}
+
+.mapTableRow:last-child { border-bottom: none; }
+.mapTableRow:hover { background: var(--bg-card-hover); }
+
+.mapTablePair {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.mapTableBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid;
+  font-size: 10px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.mapTableSep {
+  font-size: 10px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.mapTableTitle {
+  font-size: 11px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mapTableSim {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+.mapTableAngle {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+}
+
 @media (max-width: 768px) {
   .page { padding: 20px 14px; }
   .header { flex-direction: column; gap: 12px; }
   .addArea { grid-template-columns: 1fr; }
   .addCard { border-radius: var(--radius-lg) !important; }
+  .addInputs { flex-direction: column; gap: 8px; }
+  .addInputs input { font-size: 14px; }
   .orDivider { flex-direction: row; padding: 8px 0; gap: 8px; }
   .orLine { flex: 1; height: 1px; width: auto; }
   .dbBtn { border-left: 1px solid var(--border-default) !important; border-radius: var(--radius-lg) !important; }
   .controls { flex-direction: column; gap: 10px; align-items: stretch; }
   .controls button { justify-content: center; }
-  .mapBody svg { height: 300px; }
-  .pairDetailTop { grid-template-columns: 1fr; }
+  .statsPre { text-align: center; }
+  .pairDetailTop { grid-template-columns: 1fr; gap: 14px; }
   .pairDetailTickets { grid-template-columns: 1fr; }
-  .pairVectorRow { flex-direction: column; }
+  .pairVectorRow { flex-direction: column; align-items: stretch; }
+  .pairVectorStats { flex-direction: row; justify-content: space-between; flex-wrap: wrap; }
   .filterTabs { flex-wrap: wrap; }
+  .pairHeader { flex-direction: column; align-items: stretch; gap: 8px; }
+  .pairMeta { justify-content: space-between; }
+  .pairTicketTitle { max-width: none; white-space: normal; }
+
+  /* Header card */
+  .mapHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .mapSub { font-size: 10px; }
+  .mapLegend { flex-wrap: wrap; gap: 8px; }
+
+  /* Pair table: stack rows vertically */
+  .mapTableHeader { display: none; }
+  .mapTableRow {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'pair pair'
+      'sim angle'
+      'status status';
+    row-gap: 6px;
+    padding: 12px 14px;
+  }
+  .mapTablePair { grid-area: pair; flex-wrap: wrap; }
+  .mapTableTitle { white-space: normal; font-size: 11px; }
+  .mapTableSim { grid-area: sim; }
+  .mapTableAngle { grid-area: angle; justify-self: end; }
+  .mapTableRow > :last-child { grid-area: status; justify-self: start; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 16px 10px; }
+  .chips { gap: 4px; }
+  .chip { font-size: 9px; padding: 3px 7px; }
+  .ticketItem { padding: 10px 12px; gap: 9px; }
+  .ticketTitle { font-size: 11px; }
+  .addCard { padding: 14px; }
+  .dbBtn { padding: 14px; }
+  .mapHeader { padding: 12px 14px 10px; }
+  .mapBody { padding: 6px 6px 10px; }
+  .resultsTitle { font-size: 14px; }
+  .pairSummary { padding: 10px 14px; font-size: 11px; }
+  .pairHeader { padding: 11px 12px; }
+  .pairDetail { padding: 12px; }
 }
