@@ -1,5 +1,6 @@
-const TICKETS = '/api/tickets';
-const CONFIG  = '/api/config';
+const BASE = 'https://detecticket-production.up.railway.app';
+const TICKETS = `${BASE}/api/tickets`;
+const CONFIG  = `${BASE}/api/config`;
 
 async function request(url, options = {}) {
   const res  = await fetch(url, {
