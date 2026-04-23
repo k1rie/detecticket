@@ -10,8 +10,10 @@
   position: fixed;
   top: 0;
   right: 0;
+  bottom: 0;
   width: 440px;
   height: 100vh;
+  height: 100dvh;
   background: var(--bg-secondary);
   border-left: 1px solid var(--border-default);
   z-index: 201;
