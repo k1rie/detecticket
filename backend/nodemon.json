@@ -1,0 +1,6 @@
+{
+  "watch": ["src"],
+  "ext": "js",
+  "ignore": ["src/**/*.test.js"],
+  "exec": "node --tls-min-v1.0 src/app.js"
+}
